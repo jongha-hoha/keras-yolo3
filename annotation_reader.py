@@ -1,6 +1,10 @@
 import cv2
 object_map = dict()
 
+filename = "/home/willook/data/coco/annotations/instances_val2017.json"
+datapath = "/home/willook/data/coco/val2017/"
+outputfilename = "/home/willook/data/coco/annotations/instances_val2017.txt"
+
 def print_with_json(filename):
     import json
     with open(filename) as json_file:
@@ -40,7 +44,7 @@ def data2str(image_id,bbox,category_id):
     return str_id, line
     
 def id2name(image_id):
-    return "val2017/"+str(image_id).zfill(12)+".jpg"
+    return datapath+str(image_id).zfill(12)+".jpg"
     
 def print_list(list_data):
     for dict_data in list_data:
@@ -62,17 +66,17 @@ def show_bbox(image_id, bbox):
     #print(">size", img.shape)
     #print(">bbox", x1,y1,x2,y2)
     
-    
     cv2.imshow(str_id, img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     
 if __name__ == '__main__':
-    filename = "captions_train2017.json"
-    #filename = "instances_train2017.json"
+    #filename = "captions_train2017.json"
+    #filename = "/home/willook/data/coco/annotations/instances_train2017.json"
+    #filename = "/home/willook/data/coco/annotations/instances_val2017.json"
     #filename = "person_keypoints_train2017.json"
     print_with_json(filename)
-    outputfilename = filename.replace("json","txt")
+    #outputfilename = filename.replace("json","txt")
     outputfile = open(outputfilename, "w")
     for key in object_map.keys():
         line = key+" "+" ".join(object_map[key])+"\n"
