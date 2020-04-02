@@ -60,8 +60,14 @@ if __name__ == '__main__':
         "--output", nargs='?', type=str, default="",
         help = "[Optional] Video output path"
     )
+    parser.add_argument(
+        '--gpu', help='comma separated list of GPU(s) to use.'
+    )
 
     FLAGS = parser.parse_args()
+
+    if FLAGS.gpu:
+        os.environ['CUDA_VISIBLE_DEVICES'] = FLAGS.gpu
 
     if FLAGS.image:
         """

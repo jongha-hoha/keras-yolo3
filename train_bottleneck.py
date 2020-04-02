@@ -14,7 +14,7 @@ from yolo3.utils import get_random_data
 
 
 def _main():
-    annotation_path = 'train.txt'
+    annotation_path = 'coco_annotation/val2017.txt'
     log_dir = 'logs/000/'
     classes_path = 'model_data/coco_classes.txt'
     anchors_path = 'model_data/yolo_anchors.txt'
